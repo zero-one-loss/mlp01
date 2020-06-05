@@ -11,29 +11,6 @@ import pandas as pd
 
 
 
-class MLP(object):
-    def __init__(self, n_classes, round, **kwargs):
-        self.clf = {}
-        self.round = round
-        self.n_classes = n_classes
-        for i in range(n_classes):
-            self.clf[i] = [MLPClassifier(**kwargs)] * round
-
-    def fit(self, train_data, train_label):
-        for i in range(self.n_classes):
-            print(i)
-            temp_label = (train_label == i).astype(np.int32)
-            for j in range(self.round):
-                self.clf[i][j].fit(train_data, temp_label)
-
-    def predict(self, test_data):
-        yp = np.zeros((test_data.shape[0], self.round, self.n_classes))
-        for i in range(self.n_classes):
-            for j in range(self.round):
-                yp[:, j, i] = self.clf[i][j].predict_proba(test_data)[:, 1]
-        yp = yp.sum(axis=1).argmax(axis=1)
-
-        return yp
 
 
 # pick first two classes
@@ -49,27 +26,27 @@ save_path = 'checkpoints'
 if args.dataset == 'mnist':
     model_list = [
         # 'scd01_32_br02_nr075_ni10',
-        # 'scd01mlp_32_br02_nr075_ni500_i1',
+        'scd01mlp_32_br02_nr075_ni500_i1',
         # 'scd01mlp_32_br05_nr075_ni1000',
         # 'scd01_32_br02_nr075_ni500_i1',
         # 'scd01mlp_32_br05_nr075_ni500_i1',
         # 'scd01mlp_32_br02_nr075_ni1000',
-        # 'scd01mlp_32_br02_nr075_ni1000_i1',
-        'scd01mlp80_32_br02_nr075_ni1000_i1'
+        'scd01mlp_32_br02_nr075_ni1000_i1',
+        # 'scd01mlp80_32_br02_nr075_ni1000_i1'
 
-        # 'svm',
-        # 'mlp',
+        'svm',
+        'mlp',
 
         # 'mlp1vall',
 
     ]
 elif args.dataset == 'cifar10':
     model_list = [
-        'scd01_32_br02_nr075_ni1000',
+        # 'scd01_32_br02_nr075_ni1000',
         'scd01_32_br02_nr075_ni500_i1',
-        'scd01mlp_32_br02_nr075_ni500_i1',
+        # 'scd01mlp_32_br02_nr075_ni500_i1',
         # 'scd01mlp_32_br05_nr075_ni500_i1',
-        'scd01mlp_32_br02_nr075_ni1000',
+        # 'scd01mlp_32_br02_nr075_ni1000',
         # 'scd01mlp_32_br05_nr075_ni1000',
         'scd01mlp_32_br02_nr075_ni1000_i1',
         'svm',
@@ -80,7 +57,7 @@ elif args.dataset == 'cifar10':
 elif args.dataset == 'imagenet':
     model_list = [
         # 'scd01_32_br05_nr075_ni500',
-        # 'scd01mlp_32_br02_nr075_ni500_i1',
+        'scd01mlp_32_br02_nr075_ni500_i1',
         # 'scd01mlp_32_br05_nr075_ni500_i1',
         # 'scd01mlp_32_br02_nr075_ni1000',
         # 'scd01mlp_32_br05_nr075_ni1000',

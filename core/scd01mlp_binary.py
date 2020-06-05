@@ -3,7 +3,7 @@ from time import time
 from torch.multiprocessing import Pool
 import torch
 import pandas as pd
-torch.multiprocessing.set_sharing_strategy('file_system')
+# torch.multiprocessing.set_sharing_strategy('file_system')
 
 
 class SCD(object):

@@ -5,7 +5,7 @@ import torch.multiprocessing as mp
 # mp.set_start_method('spawn')
 import torch
 
-torch.multiprocessing.set_sharing_strategy('file_system')
+# torch.multiprocessing.set_sharing_strategy('file_system')
 
 class SCD(object):
     """
