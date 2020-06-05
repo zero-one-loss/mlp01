@@ -1,4 +1,4 @@
-Stochastic Coordinate Descent for zero-one loss optimization
+A two layer 01 loss neural network and its adversarial and corruption robustness
 ==
 
 Introduction
