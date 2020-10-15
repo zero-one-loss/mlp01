@@ -1,4 +1,4 @@
-A two layer 01 loss neural network and its adversarial and corruption robustness
+On the transferability of adversarial examples between convex and 01 loss models
 ==
 
 Introduction
